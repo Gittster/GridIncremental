@@ -12,47 +12,57 @@ export const RANKS = [
         requiredColors: ['black', 'white'],
         patternComplexity: 'simple', // 2-4 cells
         rewardMultiplier: 1.0,
-        description: 'Simple patterns on a 4x4 grid'
+        mixColors: false,
+        usePhotoPatterns: false,
+        description: 'Simple single-color patterns on a 4x4 grid'
     },
     {
         level: 2,
         name: 'Apprentice',
-        contractsRequired: 5, // Complete 5 rank 1 contracts
+        contractsRequired: 3,
         minGridSize: 4,
         requiredColors: ['black', 'white'],
         patternComplexity: 'basic', // 4-8 cells
         rewardMultiplier: 1.2,
-        description: 'Slightly larger patterns'
+        mixColors: false,
+        usePhotoPatterns: false,
+        description: 'Slightly larger single-color patterns'
     },
     {
         level: 3,
         name: 'Journeyman',
-        contractsRequired: 10,
+        contractsRequired: 8,
         minGridSize: 6,
         requiredColors: ['black', 'white'],
         patternComplexity: 'medium', // 6-12 cells
         rewardMultiplier: 1.5,
-        description: 'Requires 6x6 grid'
+        mixColors: true, // Mixed colors start here
+        usePhotoPatterns: false,
+        description: 'Mixed color patterns, requires 6x6 grid'
     },
     {
         level: 4,
         name: 'Artisan',
-        contractsRequired: 18,
+        contractsRequired: 15,
         minGridSize: 6,
         requiredColors: ['black', 'white', 'red'],
         patternComplexity: 'medium',
         rewardMultiplier: 1.8,
+        mixColors: true,
+        usePhotoPatterns: false,
         description: 'Requires red color'
     },
     {
         level: 5,
         name: 'Expert',
-        contractsRequired: 28,
+        contractsRequired: 25,
         minGridSize: 8,
         requiredColors: ['black', 'white', 'red', 'blue'],
         patternComplexity: 'complex', // 10-20 cells
         rewardMultiplier: 2.2,
-        description: 'Requires 8x8 grid and blue color'
+        mixColors: true,
+        usePhotoPatterns: true, // Photo patterns start here
+        description: 'Photo-based patterns, requires 8x8 grid and blue'
     },
     {
         level: 6,
@@ -62,46 +72,56 @@ export const RANKS = [
         requiredColors: ['black', 'white', 'red', 'blue', 'green'],
         patternComplexity: 'complex',
         rewardMultiplier: 2.8,
+        mixColors: true,
+        usePhotoPatterns: true,
         description: 'Requires green color'
     },
     {
         level: 7,
         name: 'Grandmaster',
-        contractsRequired: 55,
+        contractsRequired: 60,
         minGridSize: 10,
         requiredColors: ['black', 'white', 'red', 'blue', 'green', 'yellow'],
         patternComplexity: 'advanced', // 15-30 cells
         rewardMultiplier: 3.5,
+        mixColors: true,
+        usePhotoPatterns: true,
         description: 'Requires 10x10 grid and yellow'
     },
     {
         level: 8,
         name: 'Virtuoso',
-        contractsRequired: 75,
+        contractsRequired: 85,
         minGridSize: 12,
         requiredColors: ['black', 'white', 'red', 'blue', 'green', 'yellow', 'purple'],
         patternComplexity: 'advanced',
         rewardMultiplier: 4.5,
+        mixColors: true,
+        usePhotoPatterns: true,
         description: 'Requires 12x12 grid and purple'
     },
     {
         level: 9,
         name: 'Legend',
-        contractsRequired: 100,
+        contractsRequired: 120,
         minGridSize: 16,
         requiredColors: ['black', 'white', 'red', 'blue', 'green', 'yellow', 'purple', 'orange'],
         patternComplexity: 'expert', // 25-50 cells
         rewardMultiplier: 6.0,
+        mixColors: true,
+        usePhotoPatterns: true,
         description: 'Requires 16x16 grid and orange'
     },
     {
         level: 10,
         name: 'Mythic',
-        contractsRequired: 150,
+        contractsRequired: 175,
         minGridSize: 20,
         requiredColors: ['black', 'white', 'red', 'blue', 'green', 'yellow', 'purple', 'orange', 'cyan', 'pink'],
         patternComplexity: 'master', // 40-80 cells
         rewardMultiplier: 8.0,
+        mixColors: true,
+        usePhotoPatterns: true,
         description: 'Requires 20x20 grid and all basic colors'
     }
 ];

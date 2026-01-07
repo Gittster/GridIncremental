@@ -271,14 +271,21 @@ button {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 #info-panel section {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+}
+
+#shop-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
 }
 
 #info-panel h3 {
@@ -478,8 +485,9 @@ button {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    max-height: 300px;
+    flex: 1;
     overflow-y: auto;
+    min-height: 0;
 }
 
 .shop-item {

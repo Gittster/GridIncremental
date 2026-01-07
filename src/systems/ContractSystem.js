@@ -1,4 +1,5 @@
 import { getRank, getMaxRank, canAccessRank, getMissingRequirements, getComplexityRange, getBaseReward } from '../data/ranks.js';
+import { getRandomPhotoPattern, fitPatternToGrid } from '../data/photoPatterns.js';
 
 /**
  * Generates contracts based on rank progression
@@ -100,6 +101,18 @@ export class ContractSystem {
         const width = this.gameState.grid.width;
         const height = this.gameState.grid.height;
 
+        // Get colors for this rank
+        const colors = rank.requiredColors.filter(c => this.gameState.hasColor(c));
+        if (colors.length === 0) colors.push('black');
+
+        // Try photo pattern for ranks that support it (with some randomness)
+        if (rank.usePhotoPatterns && Math.random() < 0.4) {
+            const photoPattern = getRandomPhotoPattern(gridSize, colors);
+            if (photoPattern) {
+                return fitPatternToGrid(photoPattern.pattern, width, height);
+            }
+        }
+
         // Create empty grid pattern
         const pattern = [];
         for (let y = 0; y < height; y++) {
@@ -109,16 +122,18 @@ export class ContractSystem {
         const complexity = getComplexityRange(rank.patternComplexity);
         const targetCells = complexity.min + Math.floor(Math.random() * (complexity.max - complexity.min + 1));
 
-        // Get colors for this rank
-        const colors = rank.requiredColors.filter(c => this.gameState.hasColor(c));
-        if (colors.length === 0) colors.push('black');
-
         // Choose pattern type randomly
         const patternTypes = this.getPatternTypesForComplexity(rank.patternComplexity);
         const patternType = patternTypes[Math.floor(Math.random() * patternTypes.length)];
 
-        // Generate the pattern
-        this.generatePatternType(pattern, patternType, colors, targetCells);
+        // Generate the pattern - use mixed colors if rank supports it
+        if (rank.mixColors && colors.length > 1) {
+            this.generatePatternType(pattern, patternType, colors, targetCells);
+        } else {
+            // Single color mode - pick one color
+            const singleColor = [colors[Math.floor(Math.random() * colors.length)]];
+            this.generatePatternType(pattern, patternType, singleColor, targetCells);
+        }
 
         return pattern;
     }
