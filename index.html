@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Incremental</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Header -->
+        <header id="game-header">
+            <h1>Grid Incremental</h1>
+            <div id="header-actions">
+                <button id="save-btn">Save</button>
+            </div>
+        </header>
+
+        <!-- Main game area -->
+        <main id="game-main">
+            <!-- Left sidebar - Resources & Automations -->
+            <aside id="left-panel">
+                <section id="resources-section">
+                    <h3>Resources</h3>
+                    <div class="resource-item">
+                        <span class="resource-label">Money</span>
+                        <span id="money-display" class="resource-value">$0</span>
+                    </div>
+                    <div class="resource-item">
+                        <span class="resource-label">Grid</span>
+                        <span id="grid-size-display" class="resource-value">4x4</span>
+                    </div>
+                    <div class="resource-item">
+                        <span class="resource-label">Contracts</span>
+                        <span id="contracts-display" class="resource-value">0</span>
+                    </div>
+                </section>
+
+                <section id="automations-section">
+                    <h3>Automations</h3>
+                    <div id="automations-list">
+                        <p class="empty-state">No automations owned</p>
+                    </div>
+                </section>
+            </aside>
+
+            <!-- Center - Canvas Grid with tools -->
+            <div id="grid-area">
+                <div id="canvas-container">
+                    <canvas id="game-canvas"></canvas>
+                </div>
+                <div id="grid-tools">
+                    <div id="color-palette"></div>
+                    <button id="clear-grid-btn" class="tool-btn">Clear</button>
+                </div>
+            </div>
+
+            <!-- Right sidebar - Contract & Shop -->
+            <aside id="info-panel">
+                <!-- Rank & Contract -->
+                <section id="contract-section">
+                    <h3>Rank: <span id="rank-display">Novice</span></h3>
+                    <div id="rank-progress"></div>
+                    <div id="contract-info"></div>
+                    <div id="rank-selector"></div>
+                    <button id="new-contract-btn" class="primary-btn">New Contract</button>
+                    <button id="abandon-contract-btn" class="danger-btn" style="display: none;">Abandon</button>
+                </section>
+
+                <!-- Shop -->
+                <section id="shop-section">
+                    <h3>Shop</h3>
+                    <div id="shop-tabs">
+                        <button class="shop-tab active" data-tab="upgrades">Upgrades</button>
+                        <button class="shop-tab" data-tab="automation">Auto</button>
+                        <button class="shop-tab" data-tab="grid">Grid</button>
+                        <button class="shop-tab" data-tab="colors">Colors</button>
+                    </div>
+                    <div id="shop-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="hide-owned-checkbox">
+                            <span>Hide owned</span>
+                        </label>
+                    </div>
+                    <div id="shop-content"></div>
+                </section>
+            </aside>
+        </main>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>
